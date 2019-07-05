@@ -9,10 +9,10 @@
 			bgColor				: 'rgba(17, 17, 19, 1)',
 			particleColor		: 'rgba(255, 40, 40, 1)',
 			particleRadius		: 3,
-			particleCount		: 60,
+			particleCount		: 160,
 			particleMaxVelocity : 0.5,
 			lineLength			: 150,
-			particleLife		: 6,
+			//particleLife		: 6,
 		};
 
 		document.querySelector('body').appendChild(canvas);
@@ -45,7 +45,8 @@
 				ctx.fillStyle = prop.particleColor;
 				ctx.fill();
 			}
-			
+
+			/*
 			reCalculateLife() {
 				if (this.life < 1) {
 					this.x = Math.random()*w;
@@ -56,6 +57,7 @@
 				}
 				this.life--;
 			}
+			*/
 		}
 
 		function reDrawBackground() {
@@ -90,7 +92,7 @@
 		
 		function reDrawParticles() {
 			for (let i in particles) {
-				particles[i].reCalculateLife();
+				//particles[i].reCalculateLife();
 				particles[i].position();
 				particles[i].reDraw();
 			}
