@@ -10,7 +10,7 @@
 			particleColor		: 'rgba(255, 40, 40, 1)',
 			particleRadius		: 3,
 			particleCount		: 160,
-			particleMaxVelocity : 0.9,
+			particleMaxVelocity : 0.5,
 			lineLength			: 150,
 			//particleLife		: 6,
 		}
@@ -48,7 +48,7 @@
 				this.y = Math.random()*h;
 				this.velocityX = Math.random() * (prop.particleMaxVelocity*2) - prop.particleMaxVelocity;
 				this.velocityY = Math.random() * (prop.particleMaxVelocity*2) - prop.particleMaxVelocity;
-				this.life = Math.random() * prop.particleLife * 60;
+				//this.life = Math.random() * prop.particleLife * 60;
 			}
 
 			position() {
