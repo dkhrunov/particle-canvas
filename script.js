@@ -10,17 +10,37 @@
 			particleColor		: 'rgba(255, 40, 40, 1)',
 			particleRadius		: 3,
 			particleCount		: 160,
-			particleMaxVelocity : 0.5,
+			particleMaxVelocity : 0.9,
 			lineLength			: 150,
 			//particleLife		: 6,
-		};
+		}
 
 		document.querySelector('body').appendChild(canvas);
 
+		function createParticles() {
+			for (let i = 0; i < prop.particleCount; i++) {
+				particles.push(new Particle);
+			}
+		}
+
+		function checkScreenSize() {
+			if (innerWidth >= '1020' || innerHeight >= '1360') {
+				prop.particleCount = 160;
+				particles.length = 0;
+				console.log('large');
+			} else if (innerWidth < '400' || innerHeight < '700') {
+				prop.particleCount = 60;
+				particles.length = 0;
+				console.log('small');
+			}
+		}
+
 		window.onresize = function() {
+			checkScreenSize();
+			createParticles();
 			w = canvas.width  = innerWidth;
 			h = canvas.height = innerHeight;
-		}
+		};
 
 		class Particle {
 			constructor() {
@@ -65,7 +85,7 @@
 			ctx.fillRect(0, 0, w, h);
 		}
 
-		function drawLines() { {
+		function drawLines() {
 			let x1, y1, x2, y2, length, opacity;
 			for (let i in particles) {
 				for (let j in particles) {
@@ -88,7 +108,6 @@
 			}
 		}
 			
-		}
 		
 		function reDrawParticles() {
 			for (let i in particles) {
@@ -106,9 +125,8 @@
 		}
 
 		function init() {
-			for (let i = 0; i < prop.particleCount; i++) {
-				particles.push(new Particle);
-			}
+			checkScreenSize();
+			createParticles();
 			loop();
 		}
 
